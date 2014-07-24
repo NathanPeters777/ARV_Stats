@@ -18,6 +18,12 @@ class Target < ActiveRecord::Base
   end
   attr_accessible :description, :outcome1, :outcome2, :final_outcome, :group_prediction, :confidence_level, :cr_divergence, :trials_cr_delta_mean, :trials_cr_delta_stddev, :trials_cr_delta_snr, :trials_zscore
 
+  belongs_to :group, :inverse_of => :targets
+
+  has_many :trials, :dependent => :destroy, :inverse_of => :target
+
+  children :trials
+
   # --- Permissions --- #
 
   def create_permitted?

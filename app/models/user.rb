@@ -6,9 +6,14 @@ class User < ActiveRecord::Base
     name          :string, :required, :unique
     email_address :email_address, :login => true
     administrator :boolean, :default => false
+    projectmanager :boolean, :default => false
     timestamps
   end
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password
+
+  has_many :trials, :inverse_of => :user
+
+  children :trials
 
   # This gives admin rights and an :active state to the first sign-up.
   # Just remove it if you don't want that

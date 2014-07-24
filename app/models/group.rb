@@ -9,6 +9,10 @@ class Group < ActiveRecord::Base
   end
   attr_accessible :name, :description
 
+  has_many :targets, :dependent => :destroy, :inverse_of => :group
+
+  children :targets
+
   # --- Permissions --- #
 
   def create_permitted?

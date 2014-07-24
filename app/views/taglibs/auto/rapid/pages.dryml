@@ -7,8 +7,6 @@
   <navigation class="main-nav" merge-attrs param="default">
     <nav-item href="#{base_url}/">Home</nav-item>
     <nav-item with="&Group"><ht key="group.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
-    <nav-item with="&Target"><ht key="target.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
-    <nav-item with="&Trial"><ht key="trial.nav_item" count="100"><model-name-human count="100"/></ht></nav-item>
   </navigation>
 </def>
 
@@ -96,6 +94,21 @@
 
     <content-body: param>
       <view:description param="description" />
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="target.collection.heading" count="&this.targets.count" >
+            <human-collection-name collection="targets" your/>
+          </ht>
+        </h3>
+
+        <collection:targets param/>
+
+        <a:targets action="new" if="&can_create?(@group.targets)" param="new-link">
+          <ht key="target.actions.new" count="1">
+            New Target
+          </ht>
+        </a:targets>
+      </section>
     </content-body:>
 
   </page>
@@ -191,6 +204,7 @@
     <body: class="show-page target" param/>
 
     <content-header: param>
+      <a:group param="parent-link">&laquo; <ht key="target.actions.back_to_parent" parent="Group" name="&this">Back to <name/></ht></a:group>
       <h2 param="heading">
         <ht key="target.show.heading" name="#{name(:no_wrapper => true)}">
           Target <name/>
@@ -208,6 +222,22 @@
 
     <content-body: param>
       <view:description param="description" />
+      <field-list fields="outcome1, outcome2, final_outcome, group_prediction, confidence_level, cr_divergence, trials_cr_delta_mean, trials_cr_delta_stddev, trials_cr_delta_snr, trials_zscore" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="trial.collection.heading" count="&this.trials.count" >
+            <human-collection-name collection="trials" your/>
+          </ht>
+        </h3>
+
+        <collection:trials param/>
+
+        <a:trials action="new" if="&can_create?(@target.trials)" param="new-link">
+          <ht key="trial.actions.new" count="1">
+            New Trial
+          </ht>
+        </a:trials>
+      </section>
     </content-body:>
 
   </page>
@@ -232,6 +262,36 @@
       <form param/>
     </content-body:>
 
+  </page>
+</def>
+
+
+
+<def tag="new-for-group-page" polymorphic/>
+<def tag="new-for-group-page" for="Target">
+  <page merge title="#{ht 'target.new_for_owner.title', :default=>['New Target for']} #{name :with => @group}">
+    <body: class="new-for-owner-page  target" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="target.new_for_owner.heading">
+          New Target
+        </ht>
+      </h2>
+      <h3 param="subheading">
+        <ht key="target.new_for_owner.subheading">
+          For:
+        </ht>
+        <a with="&@group"/>
+      </h3>
+    </content-header:>
+
+    <content-body: param>
+      <form owner="group" method="post" param>
+        <field-list: skip="group"/>
+        <submit: label="#{ht 'target.actions.create', :default=>['Create Target']}"/>
+      </form>
+    </content-body:>
   </page>
 </def>
 
@@ -303,6 +363,7 @@
     <body: class="show-page trial" param/>
 
     <content-header: param>
+      <a:target param="parent-link">&laquo; <ht key="trial.actions.back_to_parent" parent="Target" name="&this">Back to <name/></ht></a:target>
       <h2 param="heading">
         <ht key="trial.show.heading" name="#{name(:no_wrapper => true)}">
           Trial <name/>
@@ -319,6 +380,7 @@
     </content-header:>
 
     <content-body: param>
+      <field-list fields="trn1, trn2, cr1, cr2, solar_wind_speed, viewer_local_time, lst_time, user_prediction, user" param/>
     </content-body:>
 
   </page>
@@ -343,6 +405,36 @@
       <form param/>
     </content-body:>
 
+  </page>
+</def>
+
+
+
+<def tag="new-for-target-page" polymorphic/>
+<def tag="new-for-target-page" for="Trial">
+  <page merge title="#{ht 'trial.new_for_owner.title', :default=>['New Trial for']} #{name :with => @target}">
+    <body: class="new-for-owner-page  trial" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="trial.new_for_owner.heading">
+          New Trial
+        </ht>
+      </h2>
+      <h3 param="subheading">
+        <ht key="trial.new_for_owner.subheading">
+          For:
+        </ht>
+        <a with="&@target"/>
+      </h3>
+    </content-header:>
+
+    <content-body: param>
+      <form owner="target" method="post" param>
+        <field-list: skip="target"/>
+        <submit: label="#{ht 'trial.actions.create', :default=>['Create Trial']}"/>
+      </form>
+    </content-body:>
   </page>
 </def>
 
@@ -424,7 +516,7 @@
         </ht>
       </h2>
 
-      <record-flags fields="administrator" param/>
+      <record-flags fields="administrator, projectmanager" param/>
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
@@ -435,6 +527,15 @@
 
     <content-body: param>
       <field-list fields="email_address, state" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="trial.collection.heading" count="&this.trials.count" >
+            <human-collection-name collection="trials" your/>
+          </ht>
+        </h3>
+
+        <collection:trials param/>
+      </section>
     </content-body:>
 
   </page>

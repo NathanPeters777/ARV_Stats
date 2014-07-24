@@ -11,7 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724193012) do
+ActiveRecord::Schema.define(version: 20140724214243) do
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "targets", force: true do |t|
+    t.string   "description"
+    t.string   "outcome1"
+    t.string   "outcome2"
+    t.string   "final_outcome"
+    t.string   "group_prediction"
+    t.float    "confidence_level"
+    t.float    "cr_divergence"
+    t.float    "trials_cr_delta_mean"
+    t.float    "trials_cr_delta_stddev"
+    t.string   "trials_cr_delta_snr"
+    t.float    "trials_zscore"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  add_index "targets", ["group_id"], name: "index_targets_on_group_id"
+
+  create_table "trials", force: true do |t|
+    t.string   "trn1"
+    t.string   "trn2"
+    t.float    "cr1"
+    t.float    "cr2"
+    t.integer  "solar_wind_speed"
+    t.datetime "viewer_local_time"
+    t.datetime "lst_time"
+    t.string   "user_prediction"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "target_id"
+    t.integer  "user_id"
+  end
+
+  add_index "trials", ["target_id"], name: "index_trials_on_target_id"
+  add_index "trials", ["user_id"], name: "index_trials_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "crypted_password",          limit: 40
@@ -25,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140724193012) do
     t.datetime "updated_at"
     t.string   "state",                                default: "invited"
     t.datetime "key_timestamp"
+    t.boolean  "projectmanager",                       default: false
   end
 
   add_index "users", ["state"], name: "index_users_on_state"

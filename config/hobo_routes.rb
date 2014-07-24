@@ -10,11 +10,31 @@ ARVStats::Application.routes.draw do
 
 
   # Resource routes for controller targets
-  resources :targets
+  resources :targets, :only => [:new, :edit, :show, :create, :update, :destroy]
+
+  # Owner routes for controller targets
+  resources :groups, :as => :group, :only => [] do
+    resources :targets, :only => [] do
+      get '/', :on => :new, :action => 'new_for_group'
+      collection do
+        post '/', :action => 'create_for_group'
+      end
+    end
+  end
 
 
   # Resource routes for controller trials
-  resources :trials
+  resources :trials, :only => [:new, :edit, :show, :create, :update, :destroy]
+
+  # Owner routes for controller trials
+  resources :targets, :as => :target, :only => [] do
+    resources :trials, :only => [] do
+      get '/', :on => :new, :action => 'new_for_target'
+      collection do
+        post '/', :action => 'create_for_target'
+      end
+    end
+  end
 
 
   # Resource routes for controller users

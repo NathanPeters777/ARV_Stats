@@ -83,7 +83,7 @@
         </ht>
       </h2>
 
-      <record-flags fields="administrator" param/>
+      <record-flags fields="administrator, projectmanager" param/>
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
@@ -94,6 +94,15 @@
 
     <content-body: param>
       <field-list fields="email_address, state" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="trial.collection.heading" count="&this.trials.count" >
+            <human-collection-name collection="trials" your/>
+          </ht>
+        </h3>
+
+        <collection:trials param/>
+      </section>
     </content-body:>
 
   </page>

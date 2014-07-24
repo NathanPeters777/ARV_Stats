@@ -6,6 +6,11 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <ht key="target.collection.count" count="&this.targets.size">
+         <count:targets param/>
+      </ht>
+    </body:>
   </card>
 </def>
 
@@ -14,6 +19,11 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <ht key="trial.collection.count" count="&this.trials.size">
+         <count:trials param/>
+      </ht>
+    </body:>
   </card>
 </def>
 
@@ -30,6 +40,11 @@
     <header: param>
       <h4 param="heading"><a><name/></a></h4>
     </header:>
+    <body: param>
+      <ht key="trial.collection.count" count="&this.trials.size">
+         <count:trials param/>
+      </ht>
+    </body:>
   </card>
 </def>
 

@@ -13,6 +13,10 @@ ARVStats::Application.routes.draw do
   resources :targets
 
 
+  # Resource routes for controller trials
+  resources :trials
+
+
   # Resource routes for controller users
   resources :users, :only => [:edit, :show, :create, :update, :destroy] do
     member do

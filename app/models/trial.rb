@@ -15,6 +15,8 @@ class Trial < ActiveRecord::Base
   end
   attr_accessible :trn1, :trn2, :cr1, :cr2, :solar_wind_speed, :viewer_local_time, :lst_time, :user_prediction
 
+  belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :trials
+
   belongs_to :target, :inverse_of => :trials
 
   belongs_to :user, :inverse_of => :trials

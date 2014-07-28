@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724214243) do
+ActiveRecord::Schema.define(version: 20140728183542) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
   end
+
+  add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
 
   create_table "targets", force: true do |t|
     t.string   "description"
@@ -35,9 +38,11 @@ ActiveRecord::Schema.define(version: 20140724214243) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "group_id"
+    t.integer  "owner_id"
   end
 
   add_index "targets", ["group_id"], name: "index_targets_on_group_id"
+  add_index "targets", ["owner_id"], name: "index_targets_on_owner_id"
 
   create_table "trials", force: true do |t|
     t.string   "trn1"
@@ -52,8 +57,10 @@ ActiveRecord::Schema.define(version: 20140724214243) do
     t.datetime "updated_at"
     t.integer  "target_id"
     t.integer  "user_id"
+    t.integer  "owner_id"
   end
 
+  add_index "trials", ["owner_id"], name: "index_trials_on_owner_id"
   add_index "trials", ["target_id"], name: "index_trials_on_target_id"
   add_index "trials", ["user_id"], name: "index_trials_on_user_id"
 

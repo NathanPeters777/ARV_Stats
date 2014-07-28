@@ -9,6 +9,8 @@ class Group < ActiveRecord::Base
   end
   attr_accessible :name, :description
 
+  belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :groups
+
   has_many :targets, :dependent => :destroy, :inverse_of => :group
 
   children :targets

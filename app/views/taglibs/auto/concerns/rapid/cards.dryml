@@ -8,6 +8,7 @@
     </header:>
     <body: param>
       <view:description param="description"/>
+      <view:owner param="creator"/>
       <ht key="target.collection.count" count="&this.targets.size">
          <count:targets param/>
       </ht>
@@ -19,6 +20,7 @@
   <card class="target" param="default" merge>
     <body: param>
       <view:description param="description"/>
+      <view:owner param="creator"/>
       <ht key="trial.collection.count" count="&this.trials.size">
          <count:trials param/>
       </ht>
@@ -28,9 +30,9 @@
 
 <def tag="card" for="Trial">
   <card class="trial" param="default" merge>
-    <header: param>
-      <h4 param="heading"><name/></h4>
-    </header:>
+    <body: param>
+      <view:owner param="creator"/>
+    </body:>
   </card>
 </def>
 

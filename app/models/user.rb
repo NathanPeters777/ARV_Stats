@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   end
   attr_accessible :name, :email_address, :password, :password_confirmation, :current_password
 
-  has_many :trials, :inverse_of => :user
+  has_many :trials, :class_name => "Trial", :foreign_key => "owner_id", :inverse_of => :owner
+
+  has_many :targets, :class_name => "Target", :foreign_key => "owner_id", :inverse_of => :owner
+
+  has_many :groups, :class_name => "Group", :foreign_key => "owner_id", :inverse_of => :owner
 
   children :trials
 

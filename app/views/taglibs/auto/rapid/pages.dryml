@@ -85,6 +85,8 @@
 
       <record-flags fields="" param/>
 
+      <a:owner param="creator-link"/>
+
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="group.actions.edit" name="#{name(:no_wrapper => true)}">
           Edit Group
@@ -212,6 +214,8 @@
       </h2>
 
       <record-flags fields="" param/>
+
+      <a:owner param="creator-link"/>
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="target.actions.edit" name="#{name(:no_wrapper => true)}">
@@ -371,6 +375,8 @@
       </h2>
 
       <record-flags fields="" param/>
+
+      <a:owner param="creator-link"/>
 
       <a action="edit" if="&can_edit?" param="edit-link">
         <ht key="trial.actions.edit" name="#{name(:no_wrapper => true)}">

@@ -24,15 +24,15 @@ class Trial < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator?
+    owner_is? acting_user
   end
 
   def update_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || owner_is?(acting_user)
   end
 
   def destroy_permitted?
-    acting_user.administrator?
+    acting_user.administrator? || owner_is?(acting_user)
   end
 
   def view_permitted?(field)

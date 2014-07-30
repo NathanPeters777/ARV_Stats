@@ -9,6 +9,10 @@ ARVStats::Application.routes.draw do
   resources :groups
 
 
+  # Resource routes for controller group_memberships
+  resources :group_memberships, :only => [:create, :update, :destroy]
+
+
   # Resource routes for controller targets
   resources :targets, :only => [:new, :edit, :show, :create, :update, :destroy]
 
@@ -39,6 +43,9 @@ ARVStats::Application.routes.draw do
 
   # Resource routes for controller users
   resources :users, :only => [:edit, :show, :create, :update, :destroy] do
+    collection do
+      get 'complete_name'
+    end
     member do
       get 'account'
       put 'accept_invitation', :action => 'do_accept_invitation'

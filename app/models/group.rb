@@ -13,7 +13,10 @@ class Group < ActiveRecord::Base
 
   has_many :targets, :dependent => :destroy, :inverse_of => :group
 
-  children :targets
+  children :targets, :memberships
+
+  has_many :memberships, :class_name => "GroupMembership", :dependent => :destroy, :inverse_of => :group
+  has_many :members, :through => :memberships, :source => :user
 
   # --- Permissions --- #
 

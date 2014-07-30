@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
 
   has_many :groups, :class_name => "Group", :foreign_key => "owner_id", :inverse_of => :owner
 
+  has_many :group_memberships, :dependent => :destroy, :inverse_of => :user
+  has_many :joined_groups, :through => :group_memberships, :source => :group
+
   children :trials
 
   # This gives admin rights and an :active state to the first sign-up.

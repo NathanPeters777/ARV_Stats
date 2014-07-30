@@ -15,6 +15,17 @@
   </card>
 </def>
 
+<def tag="card" for="GroupMembership">
+  <card class="group-membership" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+      <div param="actions">
+        <delete-button label="X" param/>
+      </div>
+    </header:>
+  </card>
+</def>
+
 <def tag="card" for="Target">
   <card class="target" param="default" merge>
     <header: param>

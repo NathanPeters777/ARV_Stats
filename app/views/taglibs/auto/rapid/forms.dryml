@@ -1,6 +1,18 @@
 <!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
 
 
+<def tag="form" for="GroupMembership">
+  <form merge param="default">
+    <error-messages param/>
+    <field-list fields="group, user" param/>
+    <div param="actions">
+      <submit label="#{ht 'group_membership.actions.save', :default=>['Save']}" param/><or-cancel param="cancel"/>
+    </div>
+  </form>
+</def>
+
+
+
 <def tag="form" for="Group">
   <form merge param="default">
     <error-messages param/>

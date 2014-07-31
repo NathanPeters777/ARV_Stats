@@ -16,3 +16,15 @@
 @import "bootswatch/flatly/variables";
 @import "hobo_bootstrap";
 @import "bootswatch/flatly/bootswatch";
+
+.span3 input, .span3 textarea {
+  width: 100px;
+}
+
+.well {
+  min-height: 20px;
+  padding: 5px;
+  margin-bottom: 0px;
+  background-color: #ECF0F1;
+  border-radius: 6px;
+}

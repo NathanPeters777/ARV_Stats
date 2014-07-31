@@ -15,3 +15,14 @@
 <include src="taglibs/auto/rapid/forms"/>
 
 <include src="application"/>
+
+<def tag="card" for="GroupMembership">
+  <card class="group-membership" param="default" merge>
+    <header: param>
+      <h5 param="heading"><name/></h5>
+      <div param="actions">
+        <delete-button label="Remove" param/>
+      </div>
+    </header:>
+  </card>
+</def>

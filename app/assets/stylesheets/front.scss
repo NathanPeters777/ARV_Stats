@@ -24,7 +24,30 @@
 .well {
   min-height: 20px;
   padding: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   background-color: #ECF0F1;
   border-radius: 6px;
+}
+h5 {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 1px;
+  font-weight: 500;
+}
+div.card.well.group-membership {
+  padding: 0px;
+}
+form.form-horizontal.button_to {
+  height: 20px;
+  padding: 0px;
+  margin-top: 5;
+}
+
+input.btn.button.delete-button.delete-group-membership-button {
+  height: 20px;
+  width: 30px;
+  font-size: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }

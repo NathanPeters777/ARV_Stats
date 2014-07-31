@@ -1,6 +1,6 @@
 <show-page>
   <aside:>
-    <h2>Group Members</h2>
+    <h3>Group Members</h3>
     <collection:memberships part="members">
       <card><heading:><a:user/></heading:></card>
     </collection>

@@ -24,7 +24,7 @@ class Trial < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    owner_is? acting_user
+    target.group.in?(acting_user.joined_groups)
   end
 
   def update_permitted?

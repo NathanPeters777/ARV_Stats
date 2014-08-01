@@ -24,7 +24,11 @@ class Trial < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    target.group.in?(acting_user.joined_groups)
+    unless acting_user.guest?
+       target.group.in?(acting_user.joined_groups)
+    else
+      false
+    end
   end
 
   def update_permitted?

@@ -26,8 +26,10 @@
 
 <def tag="card" for="Target">
   <card class="target" param="default" merge>
+    <header: param>
+      <h4 param="heading"><name/></h4>
+    </header:>
     <body: param>
-      <view:description param="description"/>
       <a:owner param="creator-link"/>
       <ht key="trial.collection.count" count="&this.trials.size">
          <count:trials param/>

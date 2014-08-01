@@ -346,8 +346,7 @@
     </content-header:>
 
     <content-body: param>
-      <view:description param="description" />
-      <field-list fields="outcome1, outcome2, final_outcome, group_prediction, confidence_level, cr_divergence, trials_cr_delta_mean, trials_cr_delta_stddev, trials_cr_delta_snr, trials_zscore" param/>
+      <field-list fields="due_date, prompt_or_cue, outcome1, outcome2, final_outcome, group_prediction, confidence_level, cr_divergence, trials_cr_delta_mean, trials_cr_delta_stddev, trials_cr_delta_snr, trials_zscore" param/>
       <section param="collection-section">
         <h3 param="collection-heading">
           <ht key="trial.collection.heading" count="&this.trials.count" >

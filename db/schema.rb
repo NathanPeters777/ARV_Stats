@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730183332) do
+ActiveRecord::Schema.define(version: 20140801190901) do
 
   create_table "group_memberships", force: true do |t|
     t.datetime "created_at"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20140730183332) do
   add_index "groups", ["owner_id"], name: "index_groups_on_owner_id"
 
   create_table "targets", force: true do |t|
-    t.string   "description"
     t.string   "outcome1"
     t.string   "outcome2"
     t.string   "final_outcome"
@@ -49,6 +48,9 @@ ActiveRecord::Schema.define(version: 20140730183332) do
     t.datetime "updated_at"
     t.integer  "group_id"
     t.integer  "owner_id"
+    t.string   "name"
+    t.date     "due_date"
+    t.text     "prompt_or_cue"
   end
 
   add_index "targets", ["group_id"], name: "index_targets_on_group_id"

@@ -21,7 +21,7 @@ class Group < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    owner_is? acting_user
+    acting_user.projectmanager == true || acting_user.administrator?
   end
 
   def update_permitted?

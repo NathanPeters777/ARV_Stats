@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     projectmanager :boolean, :default => false
     timestamps
   end
-  attr_accessible :name, :email_address, :password, :password_confirmation, :current_password
+  attr_accessible :name, :email_address, :password, :password_confirmation, :current_password, :projectmanager
 
   has_many :trials, :class_name => "Trial", :foreign_key => "owner_id", :inverse_of => :owner
 

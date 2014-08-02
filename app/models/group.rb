@@ -21,7 +21,11 @@ class Group < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.projectmanager == true || acting_user.administrator?
+    unless acting_user.guest?
+      acting_user.projectmanager == true || acting_user.administrator?
+    else
+      false
+    end
   end
 
   def update_permitted?

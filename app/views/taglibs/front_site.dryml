@@ -117,7 +117,7 @@
         </h3>
 
         <table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
-        <created-at-heading:>Creation Date</created-at-heading:>
+        <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
           <empty-message:>No stories match your criteria</empty-message:>
         </table>
 

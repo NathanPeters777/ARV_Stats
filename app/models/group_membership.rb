@@ -13,15 +13,15 @@ class GroupMembership < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || group.creatable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def update_permitted?
-    acting_user.administrator? || group.creatable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def destroy_permitted?
-    acting_user.administrator? || group.creatable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def view_permitted?(field)

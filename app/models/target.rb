@@ -31,15 +31,15 @@ class Target < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    group.creatable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def update_permitted?
-    group.updatable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def destroy_permitted?
-    group.destroyable_by?(acting_user)
+    acting_user.administrator? || acting_user == group.owner
   end
 
   def view_permitted?(field)

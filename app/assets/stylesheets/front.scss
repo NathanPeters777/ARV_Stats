@@ -24,7 +24,7 @@
 .well {
   min-height: 20px;
   padding: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
   background-color: #ECF0F1;
   border-radius: 6px;
 }
@@ -36,6 +36,15 @@ h5 {
 }
 h2 {
   padding-bottom: 10px;
+}
+table {
+  width: 100%;
+  border: solid thin;
+}
+th {
+  text-align: left;
+  border: solid thin;
+  background-color: #ECF0F1;
 }
 div.card.well.group-membership {
   padding: 0px;

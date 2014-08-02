@@ -82,3 +82,52 @@
 
   </page>
 </def>
+
+<def tag="show-page" for="Target">
+  <page merge title="#{ht 'target.show.title', :default=>['Target'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="show-page target" param/>
+
+    <content-header: param>
+      <a:group param="parent-link">&laquo; <ht key="target.actions.back_to_parent" parent="Group" name="&this">Back to <name/></ht></a:group>
+      <h2 param="heading">
+        <ht key="target.show.heading" name="#{name(:no_wrapper => true)}">
+          Target <name/>
+        </ht>
+      </h2>
+
+      <record-flags fields="" param/>
+
+      <a:owner param="creator-link"/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="target.actions.edit" name="#{name(:no_wrapper => true)}">
+          Edit Target
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: param>
+      <field-list fields="due_date, prompt_or_cue, outcome1, outcome2, final_outcome, group_prediction, confidence_level, cr_divergence, trials_cr_delta_mean, trials_cr_delta_stddev, trials_cr_delta_snr, trials_zscore" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="trial.collection.heading" count="&this.trials.count" >
+            <human-collection-name collection="trials" your/>
+          </ht>
+        </h3>
+
+        <table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
+        <created-at-heading:>Creation Date</created-at-heading:>
+          <empty-message:>No stories match your criteria</empty-message:>
+        </table>
+
+        <a:trials action="new" if="&can_create?(@target.trials)" param="new-link">
+          <ht key="trial.actions.new" count="1">
+            New Trial
+          </ht>
+        </a:trials>
+      </section>
+    </content-body:>
+
+  </page>
+</def>

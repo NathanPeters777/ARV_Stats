@@ -31,7 +31,7 @@ class Target < ActiveRecord::Base
   # --- Permissions --- #
 
   def create_permitted?
-    acting_user.administrator? || acting_user == group.owner
+    acting_user == group.owner
   end
 
   def update_permitted?

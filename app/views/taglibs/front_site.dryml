@@ -59,7 +59,10 @@
           </ht>
         </h3>
 
-        <collection:targets param/>
+        <table:targets fields="this, due_date, trials.count, final_outcome, group_prediction, created_at">
+          <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
+            <empty-message:>No targets to view</empty-message:>
+        </table>
 
         <a:targets action="new" if="&can_create?(@group.targets)" param="new-link">
           <ht key="target.actions.new" count="1">
@@ -118,7 +121,7 @@
 
         <table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
         <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
-          <empty-message:>No stories match your criteria</empty-message:>
+          <empty-message:>No trials to view</empty-message:>
         </table>
 
         <a:trials action="new" if="&can_create?(@target.trials)" param="new-link">
@@ -126,6 +129,46 @@
             New Trial
           </ht>
         </a:trials>
+      </section>
+    </content-body:>
+
+  </page>
+</def>
+
+<def tag="show-page" for="User">
+  <page merge title="#{ht 'user.show.title', :default=>['User'], :name => name(:no_wrapper => true) }" without-aside >
+
+    <body: class="show-page user" param/>
+
+    <content-header: param>
+      <h2 param="heading">
+        <ht key="user.show.heading" name="#{name(:no_wrapper => true)}">
+          User <name/>
+        </ht>
+      </h2>
+
+      <record-flags fields="administrator, projectmanager" param/>
+
+      <a action="edit" if="&can_edit?" param="edit-link">
+        <ht key="user.actions.edit" name="#{name(:no_wrapper => true)}">
+          Edit User
+        </ht>
+      </a>
+    </content-header:>
+
+    <content-body: param>
+      <field-list fields="email_address, state" param/>
+      <section param="collection-section">
+        <h3 param="collection-heading">
+          <ht key="trial.collection.heading" count="&this.trials.count" >
+            <human-collection-name collection="trials" your/>
+          </ht>
+        </h3>
+
+        <table:trials fields="target.group.name, this, user_prediction, target.final_outcome, cr1, cr2, created_at">
+          <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
+            <empty-message:>No trials to view</empty-message:>
+        </table>
       </section>
     </content-body:>
 

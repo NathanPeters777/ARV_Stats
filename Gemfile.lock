@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/Hobo/hobo_data_tables.git
+  revision: f12f35e2d31c67a323a3f01fcbd3b91a2b7195e8
+  specs:
+    hobo_data_tables (0.0.1)
+      hobo (> 1.4.0.pre5)
+      jquery-datatables-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,6 +95,9 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-datatables-rails (2.1.10.0.4)
+      jquery-rails
+      sass-rails
     jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -173,9 +184,11 @@ DEPENDENCIES
   hobo_bootstrap (= 2.1.0)
   hobo_bootstrap_ui (= 2.1.0)
   hobo_clean_admin (= 2.1.0)
+  hobo_data_tables!
   hobo_jquery_ui (= 2.1.0)
   hobo_will_paginate
   jbuilder (~> 1.2)
+  jquery-datatables-rails (~> 2.1.10.0.4)
   jquery-rails
   jquery-ui-themes (~> 0.0.4)
   meta_request

@@ -9,3 +9,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree ./application
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/2/jquery.dataTables.bootstrap

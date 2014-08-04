@@ -10,6 +10,8 @@
 
 <include gem='hobo_bootstrap_ui'/>
 
+<include gem='hobo_data_tables'/>
+
 <include src="taglibs/auto/rapid/cards"/>
 <include src="taglibs/auto/rapid/pages"/>
 <include src="taglibs/auto/rapid/forms"/>
@@ -59,10 +61,10 @@
           </ht>
         </h3>
 
-        <table:targets fields="this, due_date, trials.count, final_outcome, group_prediction, created_at">
+        <data-table:targets fields="this, due_date, trials.count, final_outcome, group_prediction, created_at">
           <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
             <empty-message:>No targets to view</empty-message:>
-        </table>
+        </data-table>
 
         <a:targets action="new" if="&can_create?(@group.targets)" param="new-link">
           <ht key="target.actions.new" count="1">
@@ -119,10 +121,10 @@
           </ht>
         </h3>
 
-        <table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
+        <data-table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
         <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
           <empty-message:>No trials to view</empty-message:>
-        </table>
+        </data-table>
 
         <a:trials action="new" if="&can_create?(@target.trials)" param="new-link">
           <ht key="trial.actions.new" count="1">
@@ -165,10 +167,10 @@
           </ht>
         </h3>
 
-        <table:trials fields="target.group.name, this, user_prediction, target.final_outcome, cr1, cr2, created_at">
+        <data-table:trials fields="target.group.name, this, user_prediction, target.final_outcome, cr1, cr2, created_at">
           <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
             <empty-message:>No trials to view</empty-message:>
-        </table>
+        </data-table>
       </section>
     </content-body:>
 

@@ -11,4 +11,5 @@
 //= require hobo_jquery
 //= require hobo_clean_admin
 //= require hobo_jquery_ui
+//= require hobo_data_tables
 //= require_tree ./admin

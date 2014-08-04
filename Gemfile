@@ -24,6 +24,9 @@ gem 'bootswatch-rails', '0.5.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Datatables gem
+gem 'jquery-datatables-rails', '~> 2.1.10.0.4'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -61,3 +64,4 @@ gem "hobo_jquery_ui", "2.1.0"
 gem "hobo_bootstrap_ui", "2.1.0"
 gem "jquery-ui-themes", "~> 0.0.4"
 gem "hobo_clean_admin", "2.1.0"
+gem "hobo_data_tables", git: "git://github.com/Hobo/hobo_data_tables.git"

@@ -61,7 +61,7 @@
           </ht>
         </h3>
 
-        <data-table:targets fields="this, due_date, trials.count, final_outcome, group_prediction, created_at">
+        <data-table:targets fields="this, due_date, trials.count, final_outcome, group_prediction, created_at" class="stripe row-border">
           <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
             <empty-message:>No targets to view</empty-message:>
         </data-table>
@@ -121,7 +121,7 @@
           </ht>
         </h3>
 
-        <data-table:trials fields="owner, this, user_prediction, cr1, cr2, created_at">
+        <data-table:trials fields="owner, this, user_prediction, cr1, cr2, created_at" class="stripe row-border">
         <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
           <empty-message:>No trials to view</empty-message:>
         </data-table>
@@ -167,7 +167,7 @@
           </ht>
         </h3>
 
-        <data-table:trials fields="target.group.name, this, user_prediction, target.final_outcome, cr1, cr2, created_at">
+        <data-table:trials fields="target.group.name, this, user_prediction, target.final_outcome, cr1, cr2, created_at" class="stripe row-border">
           <created-at-heading:>Creation Date and Time (GMT)</created-at-heading:>
             <empty-message:>No trials to view</empty-message:>
         </data-table>
